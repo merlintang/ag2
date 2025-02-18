@@ -32,7 +32,7 @@ Some extra dependencies are needed for this notebook, which can be installed via
 pip install autogen openai openai-whisper
 ```
 
-For more information, please refer to the [installation guide](/docs/installation/Installation).
+For more information, please refer to the [installation guide](/docs/user-guide/basic-concepts/installing-ag2).
 </Info>
 </div>
 
@@ -72,7 +72,7 @@ download the example video locally. You can change `your_file_path` to
 your local video file path.
 
 ```python
-from typing import Annotated, List
+from typing import Annotated, Any, List
 
 import whisper
 from openai import OpenAI
@@ -149,7 +149,7 @@ def translate_transcript(
 
 @user_proxy.register_for_execution()
 @assistant.register_for_llm(description="recognize the speech from video and transfer into a txt file")
-def recognize_transcript_from_video(filepath: Annotated[str, "path of the video file"]) -> List[dict]:
+def recognize_transcript_from_video(filepath: Annotated[str, "path of the video file"]) -> List[dict[str, Any]]:
     try:
         # Load model
         model = whisper.load_model("small")
@@ -166,13 +166,11 @@ def recognize_transcript_from_video(filepath: Annotated[str, "path of the video 
         for segment in result["segments"]:
             # If new sentence starts, save the previous one and reset variables
             if segment["start"] != start_time and sentence:
-                transcript.append(
-                    {
-                        "sentence": sentence.strip() + ".",
-                        "timestamp_start": start_time,
-                        "timestamp_end": segment["start"],
-                    }
-                )
+                transcript.append({
+                    "sentence": sentence.strip() + ".",
+                    "timestamp_start": start_time,
+                    "timestamp_end": segment["start"],
+                })
                 sentence = ""
                 start_time = segment["start"]
 
@@ -181,13 +179,11 @@ def recognize_transcript_from_video(filepath: Annotated[str, "path of the video 
 
         # Add the final sentence
         if sentence:
-            transcript.append(
-                {
-                    "sentence": sentence.strip() + ".",
-                    "timestamp_start": start_time,
-                    "timestamp_end": result["segments"][-1]["end"],
-                }
-            )
+            transcript.append({
+                "sentence": sentence.strip() + ".",
+                "timestamp_start": start_time,
+                "timestamp_end": result["segments"][-1]["end"],
+            })
 
         # Save the transcript to a file
         with open("transcription.txt", "w") as file:
@@ -318,3 +314,7 @@ TERMINATE
 
 --------------------------------------------------------------------------------
 ```
+
+<div className="edit-url-container">
+    <a className="edit-url" href="https://github.com/ag2ai/ag2/edit/main/notebook/agentchat_video_transcript_translate_with_whisper.ipynb" target='_blank'><Icon icon="pen" iconType="solid" size="13px"/> Edit this page</a>
+</div>

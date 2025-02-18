@@ -25,18 +25,15 @@ IOStream(*args, **kwargs)
 #### get_default
 
 ```python
-get_default() -> autogen.io.IOStream
+get_default() -> autogen.io.base.IOStream
 ```
 
-    Get the default input/output stream.
-    
-    Returns:
-        IOStream: The default input/output stream.
+    Get the default input/output stream.<br/>Returns: <br/>    IOStream: The default input/output stream.
 
 <b>Returns:</b>
 | Type | Description |
 |--|--|
-| `autogen.io.IOStream` | IOStream: The default input/output stream. |
+| `autogen.io.base.IOStream` | IOStream: The default input/output stream. |
 
 <br />
 
@@ -44,18 +41,15 @@ get_default() -> autogen.io.IOStream
 #### get_global_default
 
 ```python
-get_global_default() -> autogen.io.IOStream
+get_global_default() -> autogen.io.base.IOStream
 ```
 
-    Get the default input/output stream.
-    
-    Returns:
-        IOStream: The default input/output stream.
+    Get the default input/output stream.<br/>Returns: <br/>    IOStream: The default input/output stream.
 
 <b>Returns:</b>
 | Type | Description |
 |--|--|
-| `autogen.io.IOStream` | IOStream: The default input/output stream. |
+| `autogen.io.base.IOStream` | IOStream: The default input/output stream. |
 
 <br />
 
@@ -66,7 +60,7 @@ get_global_default() -> autogen.io.IOStream
 set_default(stream: ForwardRef('IOStream') | None) -> Iterator[None]
 ```
 
-    Set the default input/output stream.
+    Set the default input/output stream.<br/>
 
 <b>Parameters:</b>
 | Name | Description |
@@ -82,7 +76,7 @@ set_default(stream: ForwardRef('IOStream') | None) -> Iterator[None]
 set_global_default(stream: IOStream) -> None
 ```
 
-    Set the default input/output stream.
+    Set the default input/output stream.<br/>
 
 <b>Parameters:</b>
 | Name | Description |

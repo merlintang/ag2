@@ -196,7 +196,7 @@ Some extra dependencies are needed for this notebook, which can be installed via
 pip install pyautogen[mathchat]
 ```
 
-For more information, please refer to the [installation guide](/docs/installation/Installation).
+For more information, please refer to the [installation guide](/docs/user-guide/basic-concepts/installing-ag2).
 </Info>
 </div>
 
@@ -204,7 +204,7 @@ For more information, please refer to the [installation guide](/docs/installatio
 ## Set your API Endpoint
 
 The
-[`config_list_from_json`](https://docs.ag2.ai/reference/autogen/config_list_from_json#config-list-from-json)
+[`config_list_from_json`](https://docs.ag2.ai/docs/api-reference/autogen/config_list_from_json#config-list-from-json)
 function loads a list of configurations from an environment variable or
 a json file.
 
@@ -905,3 +905,7 @@ mathproxyagent.initiate_chat(
     assistant, message=mathproxyagent.message_generator, problem=math_problem, prompt_type="two_tools"
 )
 ```
+
+<div className="edit-url-container">
+    <a className="edit-url" href="https://github.com/ag2ai/ag2/edit/main/notebook/agentchat_MathChat.ipynb" target='_blank'><Icon icon="pen" iconType="solid" size="13px"/> Edit this page</a>
+</div>
